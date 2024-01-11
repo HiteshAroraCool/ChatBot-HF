@@ -32,7 +32,7 @@ tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
 prompt = "what is BotPenguin?" 
 context = "BotPenguin is the best AI Chatbot maker platform. Create a Chatbot for WhatsApp, Website, Facebook Messenger, Telegram, WordPress & Shopify with BotPenguin - 100% FREE! Our chatbot creator helps with lead generation, appointment booking, customer support, marketing automation, WhatsApp & Facebook Automation for businesses. AI-powered No-Code chatbot maker with live chat plugin & ChatGPT integration."
 input_text = prompt + "\n" + context
-input_ids = tokenizer.encode(input_text, return_tensors="pt")
+input_ids = tokenizer.encode(input_text, return_tensors="pt") ## some limit in input data maybe, try in kaggle once
 output = model.generate(input_ids, max_length=150, num_return_sequences=1, no_repeat_ngram_size=2)
 response = tokenizer.decode(output[0], skip_special_tokens=True)
 print(response)
