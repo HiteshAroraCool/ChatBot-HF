@@ -3,7 +3,7 @@
     "dockerFile": "Dockerfile",
     "customizations/vscode/extensions": ["ms-python.python"],
     "customizations/vscode/settings": {
-      "python.pythonPath": "/workspaces/relinns-tech-assignment/api.py"
+      "python.pythonPath": "/workspaces/relinns-tech-assignment/model.py"
     },
     "postCreateCommand": "pip install -r requirements.txt"
   }
