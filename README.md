@@ -3,7 +3,7 @@ Relinns Tech Assessment
 
 ### Overview
 
-This project involves creating a chatbot that interacts with a given website URL using the deepset/roberta-base-squad2 API. The chatbot is designed to be demonstrable via the console.
+This project involves creating a chatbot that interacts with a given website URL using the consciousAI/question-answering-roberta-base-s-v2 API. The chatbot is designed to be demonstrable via the console.
 
 ### Project Structure
 
@@ -42,7 +42,7 @@ This project involves creating a chatbot that interacts with a given website URL
 
 ### Notes
 
-- The project utilizes the deepset/roberta-base-squad2 API from Hugging Face and includes web scraping using BeautifulSoup for data extraction.
+- The project utilizes the consciousAI/question-answering-roberta-base-s-v2 API from Hugging Face and includes web scraping using BeautifulSoup for data extraction.
 
 - The chatbot interacts with the Hugging Face question-answering pipeline, and the scraped data is stored in a pickled file for reuse.
 # Demonstration
