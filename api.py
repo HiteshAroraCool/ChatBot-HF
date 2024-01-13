@@ -1,11 +1,9 @@
 import requests
 import os
 from dotenv import load_dotenv
-from transformers import pipeline
 import _pickle
 
 load_dotenv()
-
 
 API_URL = "https://api-inference.huggingface.co/models/consciousAI/question-answering-roberta-base-s-v2"
 #API_URL = "https://api-inference.huggingface.co/models/Andron00e/YetAnother_Open-Llama-3B-LoRA-OpenOrca"
@@ -18,12 +16,11 @@ def query(payload):
 def chat_with_gpt(question, context):
 	output = query({
 		"inputs": {
-			"question": "what type of services botpenguin provide?",
+			"question": question,
 			"context": context,
 		},
 	})
 	return output
-
 
 question = "what is BotPenguin?"
 
@@ -32,14 +29,12 @@ with open("data.pkl", "rb") as f:
 context = loaded_data.get('context', None)
 
 output = chat_with_gpt(question, context)
-print(output)
 # Genrating answer and print the result
-print(question,'\n',"Genrating answer: ")
-print(output["answer"], "; Score: ", output["score"])
+print(question,'\n',"Genrating answer: ", output["answer"])
 
 while True:
     question = input("Ask a question or exit: ")
     if question.lower() == 'exit':
         break
     output = chat_with_gpt(question, context)
-    print(output['answer'], "; Score: ", output["score"])
+    print(output['answer'])
