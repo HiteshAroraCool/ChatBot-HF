@@ -3,7 +3,7 @@ Relinns Tech Assessment
 
 ### Overview
 
-This project involves creating a chatbot that interacts with a given website URL using the ChatGPT API. The chatbot is designed to be demonstrable via the console.
+This project involves creating a chatbot that interacts with a given website URL using the deepset/roberta-base-squad2 API. The chatbot is designed to be demonstrable via the console.
 
 ### Project Structure
 
@@ -15,16 +15,6 @@ This project involves creating a chatbot that interacts with a given website URL
 
 - **`check_data.py`**: Checks and prints information from `data.pkl`, ensuring that the loaded data structure is as expected.
 
-### Usage
-
-1. Run `web_scrape.py` to scrape the content of a specified website (e.g., https://botpenguin.com/) and store it in `data.pkl`.
-
-2. Run `model.py` to interact with the Hugging Face API using the extracted data. The chatbot answers predefined questions about the website.
-
-3. Optionally, run `api.py` to interact directly with the Hugging Face API, providing a custom question and context.
-
-4. Use `check_data.py` to verify the content and structure of the stored data in `data.pkl`.
-
 ### Setup
 
 1. Install required packages listed in `requirements.txt`:
@@ -35,22 +25,26 @@ This project involves creating a chatbot that interacts with a given website URL
 
 2. Configure environment variables:
 
-   - Create a `.env` file with your Hugging Face API key:
+- Create a `.env` file with your Hugging Face API key:
 
      ```
      API_KEY=your_api_key_here
      ```
 
+### Usage
+
+1. Run `web_scrape.py` to scrape the content of a specified website (e.g., https://botpenguin.com/) and store it in `data.pkl`. Optionally, Use `check_data.py` to verify the content and structure of the stored data in `data.pkl`.
+
+2. Run `api.py` to interact directly with the Hugging Face API, providing a custom question and context.
+
+3. Run `model.py` to interact with the Hugging Face API using the extracted data. The chatbot answers predefined questions about the website.
+
+
 ### Notes
 
-- The project utilizes the ChatGPT API from Hugging Face and includes web scraping using BeautifulSoup for data extraction.
+- The project utilizes the deepset/roberta-base-squad2 API from Hugging Face and includes web scraping using BeautifulSoup for data extraction.
 
 - The chatbot interacts with the Hugging Face question-answering pipeline, and the scraped data is stored in a pickled file for reuse.
-
-# How to Run
-step 1: run pip install -r requirements.txt
-step 2: we-scrape.py to create file data.pkl, if file not present already. The file data.pkl is a pickel file containting scraped text data from https://botpenguin.com/. if you want to read data run file check_data.py.
-Step 3: Execute either model.py or api.py. Both files encompass the same process; the api.py file runs the model through an API, and the model utilizes a pipeline for seamless integration.
 
 # Objective: 
 * Create a chatbot using the ChatGPT API that interacts with a given website URL. Although no front end is required, the chatbot must be demonstrable via console.*
