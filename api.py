@@ -37,4 +37,4 @@ while True:
     if question.lower() == 'exit':
         break
     output = chat_with_gpt(question, context)
-    print(output['answer'])
+    print(f"Genrating answer: {output['answer']}\n")
