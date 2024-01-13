@@ -24,8 +24,7 @@ prompt_template = PromptTemplate(input_variables=["question"], template=prompt_t
 prompt = prompt_template.generate_prompt(question=question, context=context)
 
 # Use a pipeline as a high-level helper
-model_bert = "huggingface-course/bert-finetuned-squad"
-model_llama = "codellama/CodeLlama-7b-Python-hf"  # You may use this model later
+model_bert = "consciousAI/question-answering-roberta-base-s-v2"
 
 # Make sure to provide a context string as a list, even if it's just one context
 question_answerer = pipeline("question-answering", model=model_bert, context=context)

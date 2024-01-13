@@ -7,11 +7,7 @@ load_dotenv()
 
 question = "what is BotPenguin?"
 prompt = "answer the following question: " + question
-context = """
-BotPenguin is the best AI Chatbot maker platform. Create a Chatbot for WhatsApp, Website, Facebook Messenger, Telegram, WordPress & Shopify with BotPenguin - 100% FREE!
-Our chatbot creator helps with lead generation, appointment booking, customer support, marketing automation, WhatsApp & Facebook Automation for businesses.
-AI-powered No-Code chatbot maker with live chat plugin & ChatGPT integration.
-"""
+
 
 with open("data.pkl", "rb") as f:
     context, label = _pickle.load(f)
@@ -22,6 +18,15 @@ with open("data.pkl", "rb") as f:
 
 #the best AI Chatbot maker platform 0.4783157706260681
 model = "consciousAI/question-answering-roberta-base-s-v2" 
+
+# context length issue
+"""# Load model directly
+from transformers import AutoTokenizer, AutoModelForQuestionAnswering
+
+tokenizer = AutoTokenizer.from_pretrained("deepset/roberta-base-squad2")
+model_deepset = AutoModelForQuestionAnswering.from_pretrained("deepset/roberta-base-squad2")
+inpu1 = tokenizer(prompt, context, return_tensors='pt')
+print(model_deepset(**inpu1))"""
 
 # Cannot allocate memory (12) error
 #model_llama = "codellama/CodeLlama-7b-Python-hf"  
