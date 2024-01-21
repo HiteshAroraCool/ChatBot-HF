@@ -1,3 +1,4 @@
+from gensim.parsing.preprocessing import remove_stopwords
 import requests
 from bs4 import BeautifulSoup
 import _pickle
@@ -23,18 +24,23 @@ def scrape_and_store(url, label):
     website_html = soup.prettify()
     links_list = links(website_html)
     print(f"Links Found on {label}: {len(links_list)}")
-    website_content = soup.get_text().strip()
+    website_content = remove_stopwords(soup.get_text())
 
     return website_content, links_list
 
-website_urls = {"Home page": "https://botpenguin.com/"}
 
-# Save the website text content and links in a pickled file if the file does not exist, it will create one.
-# More idea: we can use the link list to scrape other pages, make sure to append to pkl instead of replacing existing data.
-for label, url in website_urls.items():
-    website_content, links_list = scrape_and_store(url, label)
-    if website_content is not None and label is not None:
-        data = {'label': label, 'context': website_content, 'links': links_list}
-        with open('data.pkl', 'wb') as file:
-            _pickle.dump(data, file)
-        print(f"{label} data extracted")
+if __name__=='__main__':
+    
+    website_urls = {"Home page": "https://botpenguin.com/"}
+
+    # Save the website text content and links in a pickled file if the file does not exist, it will create one.
+    # More idea: we can use the link list to scrape other pages, make sure to append to pkl instead of replacing existing data.
+    for label, url in website_urls.items():
+        website_content, links_list = scrape_and_store(url, label)
+
+        if website_content is not None and label is not None:
+            data = {'label': label, 'context': website_content, 'links': links_list}
+            with open('data.pkl', 'wb') as file:
+                _pickle.dump(data, file)
+            print(f"{label} data extracted")
+    

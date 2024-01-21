@@ -5,9 +5,6 @@ import _pickle
 
 load_dotenv()
 
-API_URL = "https://api-inference.huggingface.co/models/consciousAI/question-answering-roberta-base-s-v2"
-#API_URL = "https://api-inference.huggingface.co/models/Andron00e/YetAnother_Open-Llama-3B-LoRA-OpenOrca"
-headers = {"Authorization": os.getenv("API_KEY")}
 
 def query(payload):
 	response = requests.post(API_URL, headers=headers, json=payload)
@@ -22,6 +19,12 @@ def chat_with_gpt(question, context):
 	})
 	return output
 
+
+API_URL = "https://api-inference.huggingface.co/models/consciousAI/question-answering-roberta-base-s-v2"
+#API_URL = "https://api-inference.huggingface.co/models/Andron00e/YetAnother_Open-Llama-3B-LoRA-OpenOrca"
+
+headers = {"Authorization": os.getenv("API_KEY")}
+
 question = "what is BotPenguin?"
 
 with open("data.pkl", "rb") as f:
@@ -29,6 +32,7 @@ with open("data.pkl", "rb") as f:
 context = loaded_data.get('context', None)
 
 output = chat_with_gpt(question, context)
+print(output)
 # Genrating answer and print the result
 print(question,'\n',"Genrating answer: ", output["answer"])
 

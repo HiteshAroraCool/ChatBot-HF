@@ -11,7 +11,6 @@ label = loaded_data.get('label', None)
 # Model
 # the best AI Chatbot maker platform 0.4783157706260681
 model = "consciousAI/question-answering-roberta-base-s-v2" 
-
 # Cannot allocate memory (12) error
 # model_llama = "codellama/CodeLlama-7b-Python-hf"  
 
