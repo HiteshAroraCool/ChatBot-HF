@@ -1,8 +1,7 @@
 import json
 import os
 from pprint import pprint
-import bitsandbytes as bnb
-import torch
+pip install transformers bitsandbytes>=0.39.0 -qimport torch
 import torch.nn as nn
 import transformers
 from huggingface_hub import notebook_login
