@@ -11,6 +11,7 @@ def query(payload):
 	return response.json()
 	
 def chat_with_gpt(question, context):
+	print('running')
 	output = query({
 		"inputs": {
 			"question": question,
