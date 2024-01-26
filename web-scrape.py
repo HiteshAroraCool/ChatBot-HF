@@ -19,7 +19,7 @@ def clean_webpage_content(webpage_content):
         r'Pricing Chatbot Pricing \(except WA\) arrow_right_alt.*?Website, Telegram, Facebook Live Chat bots',
         r'Partners Partners Home arrow_right_alt.*?Earn clients happierImplementation Partners arrow_right_alt',
         r'expand_more Integrations arrow_right_alt.*?expand_more DO MORE Chat Automation!',
-        re.escape(r'arrow_right_alt'),  # Escape individual characters
+        re.escape(r'arrow_right_alt'),
         re.escape(r'Enter Name*Enter Email*+ expand_more Enter Phone NumberEnter Facebook Page Link*10k 100k100k 1Mn1Mn 3Mn3Mn 10Mn10Mn+ Select number followers*Less 100k100k 500k500k+ Select number FB messages get*Enter informationCancelClaimBy submitting form agree terms. View privacy policy learn use information.'),
     ]
     for phrase in unwanted_phrases:
