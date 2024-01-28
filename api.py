@@ -2,7 +2,7 @@ import requests
 import os
 from dotenv import load_dotenv
 import _pickle
-
+import time
 load_dotenv()
 
 
@@ -11,18 +11,31 @@ def query(payload):
 	return response.json()
 	
 def chat_with_gpt(question, context):
-	print('running')
-	output = query({
-		"inputs": {
-			"question": question,
-			"context": context,
-		},
-	})
-	return output
+    try:
+        output = query({
+                "inputs": {
+                    "question": question,
+                    "context": context,
+                },
+            })
+    except Exception as e:
+         print(output, e)
+
+    if 'estimated_time' in output:
+        print(f"Model loading, {output['estimated_time']} sec", output)
+        time.sleep(output['estimated_time'])
+        print('Model Running')
+        output = query({
+            "inputs": {
+                "question": question,
+                "context": context,
+            },
+        })
+    return output
+
 
 
 API_URL = "https://api-inference.huggingface.co/models/consciousAI/question-answering-roberta-base-s-v2"
-#API_URL = "https://api-inference.huggingface.co/models/Andron00e/YetAnother_Open-Llama-3B-LoRA-OpenOrca"
 
 headers = {"Authorization": os.getenv("API_KEY")}
 
@@ -33,7 +46,7 @@ with open("data.pkl", "rb") as f:
 context = loaded_data.get('context', None)
 
 output = chat_with_gpt(question, context)
-print(output)
+#print(output)
 # Genrating answer and print the result
 print(question,'\n',"Genrating answer: ", output["answer"])
 
@@ -42,4 +55,4 @@ while True:
     if question.lower() == 'exit':
         break
     output = chat_with_gpt(question, context)
-    print(f"Genrating answer: {output['answer']}\n")
+    print(f"Genrating answer: {output['answer']}\n\n",end='')
