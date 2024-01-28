@@ -5,7 +5,6 @@ import _pickle
 import time
 load_dotenv()
 
-
 def query(payload):
 	response = requests.post(API_URL, headers=headers, json=payload)
 	return response.json()
@@ -32,8 +31,6 @@ def chat_with_gpt(question, context):
             },
         })
     return output
-
-
 
 API_URL = "https://api-inference.huggingface.co/models/consciousAI/question-answering-roberta-base-s-v2"
 
