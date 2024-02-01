@@ -1,5 +1,4 @@
 # Chatbot with Web Scraping and Hugging Face API
-Relinns Tech Assessment 
 
 ### Overview
 
